@@ -22,20 +22,23 @@ jobs:
       - run: sed -i -e 's/localhost:8080\/ex_startcode_backend_war_exploded/MYDOMAIN/g' src/settings.js
       - run: npm i
       - run: npm run build 
+      
+     # uncommented this if you use vite
+     # - run: mv ./dist/index.html ./dist/200.html
     
       # uncommented all ##
   
-      ## - name: Deploy
-      ##  uses: dswistowski/surge-sh-action@v1
-      ##  with:
+     ## - name: Deploy
+     ##   uses: dswistowski/surge-sh-action@v1
+     ##   with:
        
-      # chance this to your domain
-      ##    domain: 'domain.surge.sh'
+     # chance this to your domain
+     ##    domain: 'https://domain.surge.sh'
           
-      # chance this if to your build path, if necessary
-      ##    project: './dist'
+     # chance this if to your build path, if necessary
+     ##    project: './dist'
           
-      # setup secrets, the email you use in surge
-      # an the token, if you dont have your token, write surge token in your cmd
-      ##    login: ${{ secrets.SURGE_EMAIL }}
-      ##    token: ${{ secrets.SURGE_TOKEN }}
+     # setup secrets, the email you use in surge
+     # an the token, if you dont have your token, write surge token in your cmd
+     ##    login: ${{ secrets.SURGE_EMAIL }}
+     ##    token: ${{ secrets.SURGE_TOKEN }}
