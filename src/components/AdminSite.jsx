@@ -7,7 +7,7 @@ const AdminSite = ({isAdmin}) => {
 
     useEffect(() => {
         if(!isAdmin) {
-            navigate("/login")
+            navigate("/notauthorized")
         }
     },[])
     
