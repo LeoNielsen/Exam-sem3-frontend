@@ -1,0 +1,23 @@
+.message{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.error {
+    background-color: rgb(47, 201, 47);
+    border: none;
+    color: white;
+    padding: 12px 28px;
+    width: 120px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 40px 2px;
+    cursor: pointer;
+  }
+
+  .error:hover {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(0, 0, 0, 0.19);
+    background-color: gray;
+    color: black;
+}

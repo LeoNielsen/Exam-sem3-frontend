@@ -5,7 +5,9 @@ import LoginPage from "./components/LoginPage";
 import { useState } from "react";
 import Header from "./components/Header";
 import AdminSite from "./components/AdminSite";
-import NotAuthorized from "./components/NotAuthorized";
+import Unauthorized from "./components/Unauthorized";
+import Edit from "./components/Edit";
+import Create from "./components/Create";
 
 export default function App() {
 
@@ -21,8 +23,13 @@ export default function App() {
           <Route path="/" element={<Home />}>
           </Route>
           <Route path="login" element={<LoginPage loggedIn={loggedIn} setLoggedIn={setLoggedIn} setIsAdmin={setIsAdmin} />} />
+
+          <Route path="edit" element={<Edit />} />
+          <Route path="create" element={<Create />} />
+
           <Route path="adminsite" element={<AdminSite isAdmin={isAdmin} />} />
-          <Route path="notauthorized" element={<NotAuthorized />} />
+
+          <Route path="unauthorized" element={<Unauthorized />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </BrowserRouter>
