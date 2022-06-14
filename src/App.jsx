@@ -6,12 +6,14 @@ import { useState } from "react";
 import Header from "./components/Header";
 import AdminSite from "./components/AdminSite";
 import Unauthorized from "./components/Unauthorized";
-import Edit from "./components/Edit";
+import Edit from "./components/EditRace";
 import Create from "./components/Create";
 import Races from "./components/Races";
 import Cars from "./components/Cars";
 import MyRaces from "./components/MyRaces";
 import EditCar from "./components/EditCar";
+import Drivers from "./components/Drivers";
+import EditDriver from "./components/EditDriver";
 
 export default function App() {
 
@@ -31,8 +33,10 @@ export default function App() {
 
           <Route path="edit/:id" element={<Edit />} />
           <Route path="editcar/:id" element={<EditCar />} />
+          <Route path="editdriver/:id" element={<EditDriver />} />
           <Route path="create" element={<Create />} />
 
+          <Route path="drivers" element={<Drivers isAdmin={isAdmin} />} />
           <Route path="races" element={<Races isAdmin={isAdmin} />} />
           <Route path="cars" element={<Cars isAdmin={isAdmin} />} />
           <Route path="myraces" element={<MyRaces isAdmin={isAdmin} />} />

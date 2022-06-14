@@ -25,6 +25,10 @@ const Header = ({ loggedIn, isAdmin, setLoggedIn, isUser, setIsUser, setIsAdmin 
           }
           {
             loggedIn && isAdmin &&
+            <NavLink className="nav-link" to="/Drivers">Driver</NavLink>
+          }
+          {
+            loggedIn && isAdmin &&
             <NavLink className="nav-link" to="/races">Races</NavLink>
           }
           {
