@@ -14,7 +14,6 @@ const Races = ({ isAdmin }) => {
         facade.fetchAllRaces().then((data) => {
             setRaces(data)
         })
-
     }, [])
 
     const onClick = (event) => {
