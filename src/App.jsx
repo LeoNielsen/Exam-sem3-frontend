@@ -8,6 +8,8 @@ import AdminSite from "./components/AdminSite";
 import Unauthorized from "./components/Unauthorized";
 import Edit from "./components/Edit";
 import Create from "./components/Create";
+import Races from "./components/Races";
+import Cars from "./components/Cars";
 
 export default function App() {
 
@@ -26,6 +28,9 @@ export default function App() {
 
           <Route path="edit" element={<Edit />} />
           <Route path="create" element={<Create />} />
+
+          <Route path="races" element={<Races isAdmin={isAdmin} />} />
+          <Route path="cars" element={<Cars isAdmin={isAdmin} />} />
 
           <Route path="adminsite" element={<AdminSite isAdmin={isAdmin} />} />
 
