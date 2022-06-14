@@ -4,7 +4,7 @@ import facade from '../apiFacade'
 import "../styles/CardList.css"
 import Car from './Car'
 
-const cars = () => {
+const cars = ({isAdmin}) => {
     const [cars, setCars] = useState([])
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const cars = () => {
         <div className='card-list'>
             {cars.map((race) => {
                 return <div key={race.id}>
-                    <Car car={race} ></Car>
+                    <Car isAdmin={isAdmin} car={race} ></Car>
                 </div>
             })}
         </div>

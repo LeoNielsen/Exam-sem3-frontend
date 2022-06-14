@@ -23,7 +23,11 @@ const Header = ({ loggedIn, isAdmin, setLoggedIn }) => {
           }
           {
             loggedIn && isAdmin &&
-            <NavLink className="nav-link" to="/adminsite">admin</NavLink>
+            <NavLink className="nav-link" to="/cars">Cars</NavLink>
+          }
+           {
+            loggedIn && isAdmin &&
+            <NavLink className="nav-link" to="/Create">Create</NavLink>
           }
 
 

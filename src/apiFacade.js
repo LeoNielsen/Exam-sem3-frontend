@@ -63,12 +63,12 @@ function apiFacade() {
   }
 
   const createDriver = (data) => {
-    const options = makeOptions("PUT", true, data);
+    const options = makeOptions("POST", true, data);
     return fetch(URL + `/api/driver/create`, options).then(handleHttpErrors);
   }
 
   const updateDriver = (id, data) => {
-    const options = makeOptions("POST", true, data);
+    const options = makeOptions("PUT", true, data);
     return fetch(URL + `/api/driver/update/${id}`, options).then(handleHttpErrors);
   }
 
@@ -88,12 +88,12 @@ function apiFacade() {
   }
 
   const createCar = (data) => {
-    const options = makeOptions("PUT", true, data);
+    const options = makeOptions("POST", true, data);
     return fetch(URL + `/api/car/create`, options).then(handleHttpErrors);
   }
 
   const updateCar = (id, data) => {
-    const options = makeOptions("POST", true, data);
+    const options = makeOptions("PUT", true, data);
     return fetch(URL + `/api/car/update/${id}`, options).then(handleHttpErrors);
   }
 
@@ -119,12 +119,12 @@ function apiFacade() {
   }
 
   const createRace = (data) => {
-    const options = makeOptions("PUT", true, data);
+    const options = makeOptions("POST", true, data);
     return fetch(URL + `/api/race/create`, options).then(handleHttpErrors);
   }
 
   const updateRace = (id, data) => {
-    const options = makeOptions("POST", true, data);
+    const options = makeOptions("PUT", true, data);
     return fetch(URL + `/api/race/update/${id}`, options).then(handleHttpErrors);
   }
 
