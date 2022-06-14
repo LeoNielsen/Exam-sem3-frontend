@@ -3,10 +3,12 @@ import { Outlet, Link, NavLink } from "react-router-dom";
 import facade from '../apiFacade';
 import "../styles/Header.css"
 
-const Header = ({ loggedIn, isAdmin, setLoggedIn, isUser }) => {
+const Header = ({ loggedIn, isAdmin, setLoggedIn, isUser, setIsUser, setIsAdmin }) => {
 
   function logout() {
     setLoggedIn(false)
+    setIsAdmin(false)
+    setIsUser(false)
     facade.logout();
   }
 

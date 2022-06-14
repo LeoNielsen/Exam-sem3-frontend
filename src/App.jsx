@@ -11,6 +11,7 @@ import Create from "./components/Create";
 import Races from "./components/Races";
 import Cars from "./components/Cars";
 import MyRaces from "./components/MyRaces";
+import EditCar from "./components/EditCar";
 
 export default function App() {
 
@@ -22,13 +23,14 @@ export default function App() {
   return (
     <div>
       <BrowserRouter>
-        <Header loggedIn={loggedIn} isAdmin={isAdmin} setLoggedIn={setLoggedIn} isUser={isUser}/>
+        <Header loggedIn={loggedIn} isAdmin={isAdmin} setLoggedIn={setLoggedIn} isUser={isUser} setIsuser={setIsUser} setIsAdmin={setIsAdmin}/>
         <Routes>
           <Route path="/" element={<Home />}>
           </Route>
           <Route path="login" element={<LoginPage loggedIn={loggedIn} setLoggedIn={setLoggedIn} setIsAdmin={setIsAdmin} setIsUser={setIsUser} />} />
 
           <Route path="edit/:id" element={<Edit />} />
+          <Route path="editcar/:id" element={<EditCar />} />
           <Route path="create" element={<Create />} />
 
           <Route path="races" element={<Races isAdmin={isAdmin} />} />
