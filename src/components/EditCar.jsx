@@ -46,7 +46,7 @@ const EditCar = () => {
                 navigate("/unauthorized")
             }
         })
-        navigate("/cars")
+        setTimeout(navigate("/cars"),1000)
     }
 
     const cancel = () => {
@@ -67,7 +67,7 @@ const EditCar = () => {
                 navigate("/unauthorized")
             }
         })
-        setTimeout(navigate("/car"), 1000)
+        setTimeout(navigate("/cars"), 1000)
 
     }
 

@@ -37,7 +37,7 @@ const EditDriver = () => {
                 navigate("/unauthorized")
             }
         })
-        navigate("/drivers")
+        setTimeout(navigate("/drivers"),1000)
     }
 
     const cancel = () => {

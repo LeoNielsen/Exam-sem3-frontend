@@ -47,7 +47,7 @@ const Edit = () => {
                 navigate("/unauthorized")
             }
         })
-        navigate("/races")
+        setTimeout(navigate("/races"),1000)
     }
 
     const cancel = () => {
