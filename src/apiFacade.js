@@ -52,6 +52,82 @@ function apiFacade() {
       .then(res => { setToken(res.token) })
   }
 
+  const fetchAllDrivers = () => {
+    const options = makeOptions("GET", false); 
+    return fetch(URL + "/api/driver/all", options).then(handleHttpErrors);
+  }
+
+  const fetchDriverById = (id) => {
+    const options = makeOptions("GET", true); 
+    return fetch(URL + `/api/driver/${id}`, options).then(handleHttpErrors);
+  }
+
+  const createDriver = (data) => {
+    const options = makeOptions("PUT", true, data); 
+    return fetch(URL + `/api/driver/create`, options).then(handleHttpErrors);
+  }
+
+  const updateDriver = (id,data) => {
+    const options = makeOptions("POST", true, data); 
+    return fetch(URL + `/api/driver/update/${id}`, options).then(handleHttpErrors);
+  }
+
+  const deleteDriver = (id) => {
+    const options = makeOptions("POST", true); 
+    return fetch(URL + `/api/driver/delete/${id}`, options).then(handleHttpErrors);
+  }
+
+  const fetchAllCars = () => {
+    const options = makeOptions("GET", false); 
+    return fetch(URL + "/api/car/all", options).then(handleHttpErrors);
+  }
+
+  const fetchCarById = (id) => {
+    const options = makeOptions("GET", true); 
+    return fetch(URL + `/api/car/${id}`, options).then(handleHttpErrors);
+  }
+
+  const createCar = (data) => {
+    const options = makeOptions("PUT", true, data); 
+    return fetch(URL + `/api/car/create`, options).then(handleHttpErrors);
+  }
+
+  const updateCar = (id,data) => {
+    const options = makeOptions("POST", true, data); 
+    return fetch(URL + `/api/car/update/${id}`, options).then(handleHttpErrors);
+  }
+
+  const deleteCar = (id) => {
+    const options = makeOptions("POST", true); 
+    return fetch(URL + `/api/car/delete/${id}`, options).then(handleHttpErrors);
+  }
+
+  const fetchAllRaces = () => {
+    const options = makeOptions("GET", false); 
+    return fetch(URL + "/api/race/all", options).then(handleHttpErrors);
+  }
+
+  const fetchRaceById = (id) => {
+    const options = makeOptions("GET", true); 
+    return fetch(URL + `/api/race/${id}`, options).then(handleHttpErrors);
+  }
+
+  const createRace = (data) => {
+    const options = makeOptions("PUT", true, data); 
+    return fetch(URL + `/api/race/create`, options).then(handleHttpErrors);
+  }
+
+  const updateRace = (id,data) => {
+    const options = makeOptions("POST", true, data); 
+    return fetch(URL + `/api/race/update/${id}`, options).then(handleHttpErrors);
+  }
+
+  const deleteRace = (id) => {
+    const options = makeOptions("POST", true); 
+    return fetch(URL + `/api/race/delete/${id}`, options).then(handleHttpErrors);
+  }
+
+
   const makeOptions = (method, addToken, body) => {
     var opts = {
       method: method,
@@ -78,6 +154,21 @@ function apiFacade() {
     decodeToken,
     fetchUserInfo,
     create,
+    fetchAllDrivers,
+    fetchAllCars,
+    fetchAllRaces,
+    fetchDriverById,
+    fetchCarById,
+    fetchRaceById,
+    createDriver,
+    createCar,
+    createRace,
+    updateDriver,
+    updateCar,
+    updateRace,
+    deleteDriver,
+    deleteCar,
+    deleteRace,
   }
 }
 const facade = apiFacade();
