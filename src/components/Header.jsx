@@ -3,13 +3,13 @@ import { Outlet, Link, NavLink } from "react-router-dom";
 import facade from '../apiFacade';
 import "../styles/Header.css"
 
-const Header = ({ loggedIn, isAdmin, setLoggedIn }) => {
-  
+const Header = ({ loggedIn, isAdmin, setLoggedIn, isUser }) => {
+
   function logout() {
     setLoggedIn(false)
     facade.logout();
   }
-  
+
   return (
     <div>
       <header>
@@ -25,10 +25,15 @@ const Header = ({ loggedIn, isAdmin, setLoggedIn }) => {
             loggedIn && isAdmin &&
             <NavLink className="nav-link" to="/cars">Cars</NavLink>
           }
-           {
+          {
             loggedIn && isAdmin &&
             <NavLink className="nav-link" to="/Create">Create</NavLink>
           }
+          {
+            loggedIn && isUser &&
+            <NavLink className="nav-link" to="/myraces">My Races</NavLink>
+          }
+
 
 
         </nav>

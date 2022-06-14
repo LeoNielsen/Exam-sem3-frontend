@@ -4,7 +4,7 @@ import { useState } from 'react';
 import facade from '../apiFacade';
 import "../styles/DisplayCard.css"
 
-const Race = ({ isAdmin ,race }) => {
+const Race = ({ isAdmin ,race, onClick }) => {
     const [cars, setCars] = useState([])
 
     useEffect(() => {
@@ -14,7 +14,7 @@ const Race = ({ isAdmin ,race }) => {
     },[])
 
     return (
-        <div className='card-container' >
+        <div className='card-container' id={race.id} onClick={onClick} >
             <h1>{race.name}</h1>
             {
                 isAdmin &&

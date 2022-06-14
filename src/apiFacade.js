@@ -1,4 +1,5 @@
 import URL from "./settings";
+import jwtDecode from "jwt-decode";
 
 function handleHttpErrors(res) {
   if (!res.ok) {
@@ -138,6 +139,11 @@ function apiFacade() {
     return fetch(URL + `/api/race/getcars/${id}`, options).then(handleHttpErrors);
   }
 
+  const getRacesByDriver = (id) => {
+    const options = makeOptions("GET", true);
+    return fetch(URL + `/api/driver/races/${id}`, options).then(handleHttpErrors);
+  }
+
 
   const makeOptions = (method, addToken, body) => {
     var opts = {
@@ -182,6 +188,7 @@ function apiFacade() {
     deleteRace,
     getCarsFromRace,
     getDriverFromCar,
+    getRacesByDriver,
   }
 }
 const facade = apiFacade();

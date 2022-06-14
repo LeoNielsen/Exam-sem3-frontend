@@ -2,9 +2,11 @@ import React from 'react'
 import "../styles/Edit.css"
 import { useState } from 'react'
 import facade from '../apiFacade';
+import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
 
+    const navigate = useNavigate()
     const [data, setData] = useState({});
     const [selection, setSelection] = useState("race");
 
@@ -32,15 +34,46 @@ const Create = () => {
         setData({})
     }
 
-    const Create = () => {
+    const Create = (event) => {
         if (selection == "race") {
-            facade.createRace(data)
+            facade.createRace(data).catch((err) => {
+                if (err.status == 403) {
+                    navigate("/login")
+                } else if (err.status == 401) {
+                    navigate("/unauthorized")
+                }
+            })
+            setTimeout(navigate("/races"), 1000)
         }
         if (selection == "car") {
-            facade.createCar(data)
+            facade.createCar(data).catch((err) => {
+                if (err.status == 403) {
+                    navigate("/login")
+                } else if (err.status == 401) {
+                    navigate("/unauthorized")
+                }
+            })
+            const inputFields = document.querySelectorAll("input");
+
+            inputFields.forEach((input) => {
+                input.value = "";
+            })
+            setData({})
         }
         if (selection == "driver") {
-            facade.createDriver(data)
+            facade.createDriver(data).catch((err) => {
+                if (err.status == 403) {
+                    navigate("/login")
+                } else if (err.status == 401) {
+                    navigate("/unauthorized")
+                }
+            })
+
+            const inputFields = document.querySelectorAll("input");
+            inputFields.forEach((input) => {
+                input.value = "";
+            })
+            setData({})
         }
     }
 
@@ -66,35 +99,53 @@ const Create = () => {
                 (selection == "race") ?
                     (<form>
                         <input id='name' type="text" placeholder='Enter Race Name' onChange={onChange} />
+                        <br />
                         <input id='location' type="text" placeholder='Enter Race Location' onChange={onChange} />
                         <br />
                         <br />
                         <label>Enter Start Date</label> <br />
+                        <br />
                         <input id='startDate' type="date" placeholder='Enter Race Start Date' onChange={onChange} />
+                        <br />
                         <input id='duration' type="text" placeholder='Enter Race Duration' onChange={onChange} />
+                        <br />
                         <input id='carsId' type="text" placeholder="Enter Car ID's, Comma Separated" onChange={onChangeArray} />
-
                     </form>)
                     :
                     (selection == "car") ?
                         (<form>
                             <input id='name' type="text" placeholder='Enter Car Name' onChange={onChange} />
+                            <br />
                             <input id='brand' type="text" placeholder='Enter Car Brand' onChange={onChange} />
+                            <br />
                             <input id='make' type="text" placeholder='Enter Car Make' onChange={onChange} />
+                            <br />
                             <input id='year' type="number" min={1950} max={2050} placeholder='Enter Car Year' onChange={onChange} />
+                            <br />
                             <input id='sponsor' type="text" placeholder='Enter Car Sponsor' onChange={onChange} />
+                            <br />
                             <input id='color' type="text" placeholder='Enter Car Color' onChange={onChange} />
+                            <br />
                             <input id='driversIds' type="text" placeholder="Enter Driver ID's, Comma Separated" onChange={onChangeArray} />
                         </form>)
                         :
-                        (<form>
-                            <input id='name' type="text" placeholder='Enter Driver Name' onChange={onChange} />
-                            <input id='birthYear' type="number" min={1900} max={2050} placeholder='Enter Driver Birth Year' onChange={onChange} />
-                            <input id='experience' type="text"  placeholder='Enter Driver Experience' onChange={onChange} />
-                            <input id='gender' type="text"  placeholder='Enter Driver Gender' onChange={onChange} />
-                            <input id='carId' type="text"  placeholder='Enter Driver Car ID' onChange={onChange} />
-                            <input id='user' type="text"  placeholder='Enter Driver user ID' onChange={onChange} />
-                        </form>)
+
+                        (selection == "driver") ?
+                            (<form>
+                                <input id='name' type="text" placeholder='Enter Driver Name' onChange={onChange} />
+                                <br />
+                                <input id='birthYear' type="number" min={1900} max={2050} placeholder='Enter Driver Birth Year' onChange={onChange} />
+                                <br />
+                                <input id='experience' type="text" placeholder='Enter Driver Experience' onChange={onChange} />
+                                <br />
+                                <input id='gender' type="text" placeholder='Enter Driver Gender' onChange={onChange} />
+                                <br />
+                                <input id='carId' type="text" placeholder='Enter Driver Car ID' onChange={onChange} />
+                                <br />
+                                <input id='user' type="text" placeholder='Enter Driver username' onChange={onChange} />
+                            </form>)
+                        : 
+                        <></>
 
             }
 

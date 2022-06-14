@@ -10,27 +10,30 @@ import Edit from "./components/Edit";
 import Create from "./components/Create";
 import Races from "./components/Races";
 import Cars from "./components/Cars";
+import MyRaces from "./components/MyRaces";
 
 export default function App() {
 
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isUser, setIsUser] = useState(false);
 
   return (
     <div>
       <BrowserRouter>
-        <Header loggedIn={loggedIn} isAdmin={isAdmin} setLoggedIn={setLoggedIn}/>
+        <Header loggedIn={loggedIn} isAdmin={isAdmin} setLoggedIn={setLoggedIn} isUser={isUser}/>
         <Routes>
           <Route path="/" element={<Home />}>
           </Route>
-          <Route path="login" element={<LoginPage loggedIn={loggedIn} setLoggedIn={setLoggedIn} setIsAdmin={setIsAdmin} />} />
+          <Route path="login" element={<LoginPage loggedIn={loggedIn} setLoggedIn={setLoggedIn} setIsAdmin={setIsAdmin} setIsUser={setIsUser} />} />
 
-          <Route path="edit" element={<Edit />} />
+          <Route path="edit/:id" element={<Edit />} />
           <Route path="create" element={<Create />} />
 
           <Route path="races" element={<Races isAdmin={isAdmin} />} />
           <Route path="cars" element={<Cars isAdmin={isAdmin} />} />
+          <Route path="myraces" element={<MyRaces isAdmin={isAdmin} />} />
 
           <Route path="adminsite" element={<AdminSite isAdmin={isAdmin} />} />
 

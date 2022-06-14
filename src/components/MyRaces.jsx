@@ -5,22 +5,24 @@ import Race from './Race'
 import "../styles/CardList.css"
 import { useNavigate } from 'react-router-dom'
 
-const Races = ({ isAdmin }) => {
-
+const MyRaces = () => {
     const navigate = useNavigate()
     const [races, setRaces] = useState([])
 
     useEffect(() => {
-        facade.fetchAllRaces().then((data) => {
+        const token = facade.decodeToken();
+        console.log(token);
+
+        facade.getRacesByDriver(token.sub).then((data) => {
             setRaces(data)
         })
 
     }, [])
 
     const onClick = (event) => {
-       if (isAdmin) {
-           navigate("/edit/"+event.currentTarget.id)
-       }
+        if (isAdmin) {
+            navigate("/edit/" + event.currentTarget.id)
+        }
     }
 
     console.table(races)
@@ -29,11 +31,11 @@ const Races = ({ isAdmin }) => {
         <div className='card-list'>
             {races.map((race) => {
                 return <div key={race.id}>
-                    <Race isAdmin={isAdmin} race={race} onClick={onClick} ></Race>
+                    <Race race={race} onClick={onClick} ></Race>
                 </div>
             })}
         </div>
     )
 }
 
-export default Races
+export default MyRaces
